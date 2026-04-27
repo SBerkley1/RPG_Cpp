@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "Ability.h"
+#include "Mana.h"
 
 Character::Character(const string& name, int startingHP, int startingMana)
 	: Name{ name }, HitPoints{ startingHP }, ManaPoints{ startingMana }
@@ -19,6 +20,17 @@ void Character::useAbility(size_t index, Character &target)
 	if (index >= CharacterAbilities.size()) {
 		cout << "Invalid ability!" << endl;
 		return;
+	}
+
+	Ability* ability = CharacterAbilities[index].get();
+
+	if(ManaPoints.isEnoughMana(ability)) {
+		int cost = ManaPoints.getCurrentMana() - ability->getManaCost();
+
+		ManaPoints.setCurrentMana(cost);
+	}
+	else {
+		cout << "You do not have enough mana!" << endl;
 	}
 
 	CharacterAbilities[index]->useAbility(*this, target);
