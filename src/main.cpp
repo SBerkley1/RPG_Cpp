@@ -2,6 +2,7 @@
 #include <memory>
 
 #include "Ability.h"
+#include "AbilityFactory.h"
 #include "Character.h"
 #include "Enraged.h"
 #include "Fireball.h"
@@ -35,7 +36,7 @@ int main() {
    int counter = 0;
     while (wizard->isAlive() && goblin->isAlive()) {
         if (counter == 2) {
-            wizard->useAbility(1, *wizard);  // will need to work on this so it only has one parameter
+            wizard->useAbility(1, *wizard); 
         }
 
         wizard->useAbility(0, *goblin);
@@ -65,8 +66,13 @@ int main() {
 
 void loadAbilities(Character* player, Character* npc)
 {
-    for (Character* c : {player, npc}) {
-        c->addAbility(std::make_shared<Fireball>(2));
-        c->addAbility(std::make_shared<Enraged>(2,2));
+    // load wizard abilities
+    for (auto& ability : AbilityFactory::createWizardAbilities()) {
+        player->addAbility(ability);
+    }
+
+    // load goblin abilities
+    for (auto& ability : AbilityFactory::createGoblinAbilities()) {
+        npc->addAbility(ability);
     }
 }

@@ -8,6 +8,7 @@ include_directories(header)
 add_executable(RPG_GAME
     src/main.cpp
     src/Ability.cpp
+    src/AbilityFactory.cpp
     src/Character.cpp
     src/HP.cpp
     src/Player.cpp
