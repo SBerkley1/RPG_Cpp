@@ -1,0 +1,34 @@
+#include "Ability.h"
+#include "Effect.h"
+#include "Monster.h"
+
+void Monster::characterTakeDamage(int damage)
+{
+    cout << this->Name << " takes " << damage << " damage!" << endl;
+	this->HitPoints.takeDamage(damage);
+}
+
+void Monster::printAbilities() const
+{
+    	// iterate through ability list and print the name
+		cout << this->Name << "\'s Ability List:" << endl;
+
+		for (const auto& ability : CharacterAbilities) {
+			cout << ability->getName() << " ";
+		}
+
+		cout << endl;
+}
+
+
+void Monster::printEffects() const
+{
+    cout << this->Name << "\'s Active Buffs/Debuffs:" << endl;
+
+    for (const auto& effect: ActiveEffects) {
+        cout << effect.name
+             << ":  Description: " << effect.description
+             << "   Duration: " << effect.effectRounds << endl;
+    }
+}
+

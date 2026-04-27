@@ -1,0 +1,47 @@
+#include "Mana.h"
+#include <cstddef>
+#include <iostream>
+
+Mana::Mana(int newPlayerMana)
+{
+    this->CurrentMana = newPlayerMana;
+    this->MaxMana = newPlayerMana;
+}
+
+int Mana::getCurrentMana()
+{
+    return CurrentMana;
+}
+
+int Mana::getMaxMana()
+{
+    return MaxMana;
+}
+
+void Mana::setLvlUpMaxMana(int addLvlUpMana)
+    // used when lvling up
+{
+    this->MaxMana += addLvlUpMana;
+    this->CurrentMana = this->MaxMana;
+}
+
+void Mana::restoreMana(int restoreAmount)
+{
+    for(size_t i = 0; i < restoreAmount; ++i) {
+        if(this->CurrentMana >= this->MaxMana) {
+            break;
+        }
+
+        CurrentMana += restoreAmount;
+    }
+}
+
+void Mana::printManaSlots() const
+{
+    std::cout << "Mana: ";
+    char manaCharacter = 'o';
+    for(size_t i = 0; i <= this->CurrentMana; ++i) {
+        std::cout << manaCharacter << ' ';
+    }
+    std::cout << std::endl;
+}
