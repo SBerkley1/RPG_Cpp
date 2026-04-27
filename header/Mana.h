@@ -1,6 +1,9 @@
 #ifndef MANA_H
 #define MANA_H
 
+// forward declaration
+class Ability;
+
 class Mana {
 public:
     Mana() = default;
@@ -10,6 +13,9 @@ public:
     int getCurrentMana();
     int getMaxMana();
 
+    bool isEnoughMana(Ability* ability);
+
+    void setCurrentMana(int mana);          // set current mana after using ability
     void setLvlUpMaxMana(int addLvlUpMana); // setting new max mana after lvl up
 
     void restoreMana(int restoreAmount);    // restore mana via potion

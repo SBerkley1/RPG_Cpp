@@ -1,4 +1,5 @@
 #include "Mana.h"
+#include "Ability.h"
 #include <cstddef>
 #include <iostream>
 
@@ -18,8 +19,18 @@ int Mana::getMaxMana()
     return MaxMana;
 }
 
+bool Mana::isEnoughMana(Ability* ability)
+{
+    return CurrentMana >= ability->getManaCost();
+}
+
+void Mana::setCurrentMana(int mana)
+{
+    this->CurrentMana = mana;
+}
+
 void Mana::setLvlUpMaxMana(int addLvlUpMana)
-    // used when lvling up
+// used when lvling up
 {
     this->MaxMana += addLvlUpMana;
     this->CurrentMana = this->MaxMana;
