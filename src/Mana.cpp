@@ -52,7 +52,12 @@ void Mana::printManaSlots() const
     std::cout << "Mana: ";
     char manaCharacter = 'o';
     for(size_t i = 0; i <= this->CurrentMana; ++i) {
-        std::cout << manaCharacter << ' ';
+        if (CurrentMana != 0) {
+            std::cout << manaCharacter << ' ';
+        }
+        else {
+            std::cout << "Empty";
+        }
     }
     std::cout << std::endl;
 }
