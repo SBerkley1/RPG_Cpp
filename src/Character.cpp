@@ -28,12 +28,14 @@ void Character::useAbility(size_t index, Character &target)
 		int cost = ManaPoints.getCurrentMana() - ability->getManaCost();
 
 		ManaPoints.setCurrentMana(cost);
+		
+		CharacterAbilities[index]->useAbility(*this, target);
 	}
 	else {
 		cout << "You do not have enough mana!" << endl;
 	}
 
-	CharacterAbilities[index]->useAbility(*this, target);
+	
 }
 
 void Character::addAbility(std::unique_ptr<Ability> ability)

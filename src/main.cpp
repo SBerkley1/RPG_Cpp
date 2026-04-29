@@ -10,13 +10,13 @@
 #include "Monster.h"
 #include "Player.h"
 
-void loadAbilities(Character* player, Character* npc);
+void loadAbilities(Character& player, Character& npc);
 
 int main() {
-    auto wizard = std::make_shared<Player>("Valek", 16, 5);
-    auto goblin = std::make_shared<Monster>("Goblin", 11, 5);
+    auto wizard = std::make_unique<Player>("Valek", 25, 5);
+    auto goblin = std::make_unique<Monster>("Goblin", 20, 5);
 
-    loadAbilities(wizard.get(), goblin.get());
+    loadAbilities(*wizard, *goblin);
 
     wizard->printAbilities();
 
@@ -34,7 +34,7 @@ int main() {
 
 
    int counter = 0;
-    while (wizard->isAlive() && goblin->isAlive()) {
+    while (wizard->isAlive() && goblin->isAlive() && counter <= 10) {
         if (counter == 2) {
             wizard->useAbility(1, *wizard); 
         }
@@ -64,15 +64,15 @@ int main() {
     return 0;
 }
 
-void loadAbilities(Character* player, Character* npc)
+void loadAbilities(Character& player, Character& npc)
 {
     // load wizard abilities
     for (auto& ability : AbilityFactory::createWizardAbilities()) {
-        player->addAbility(std::move(ability));
+        player.addAbility(std::move(ability));
     }
 
     // load goblin abilities
     for (auto& ability : AbilityFactory::createGoblinAbilities()) {
-        npc->addAbility(std::move(ability));
+        npc.addAbility(std::move(ability));
     }
 }

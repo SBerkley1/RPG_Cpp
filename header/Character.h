@@ -49,7 +49,7 @@ protected:
 	HP HitPoints;											// character hit points
 	Mana ManaPoints;			
 
-    vector<std::shared_ptr<Ability>> CharacterAbilities;	// all of character's abilities
+    vector<std::unique_ptr<Ability>> CharacterAbilities;	// all of character's abilities
 	vector<Effect> ActiveEffects;							// buffs and debuffs applied to a character
 };
 
