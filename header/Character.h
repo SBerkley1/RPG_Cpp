@@ -32,7 +32,7 @@ public:
 
 	void useAbility(size_t index, Character& targer);		// character used an ability in CharacterAbilities
 
-    void addAbility(std::shared_ptr<Ability> ability);
+    void addAbility(std::unique_ptr<Ability> ability);
 	void addEffect(const Effect& effect);					// add buffs and debuffs to player 
 	void updateEffect();									// removes 1 turn from the buff/debuff countdown
 

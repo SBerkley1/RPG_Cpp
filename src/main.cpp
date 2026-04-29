@@ -68,11 +68,11 @@ void loadAbilities(Character* player, Character* npc)
 {
     // load wizard abilities
     for (auto& ability : AbilityFactory::createWizardAbilities()) {
-        player->addAbility(ability);
+        player->addAbility(std::move(ability));
     }
 
     // load goblin abilities
     for (auto& ability : AbilityFactory::createGoblinAbilities()) {
-        npc->addAbility(ability);
+        npc->addAbility(std::move(ability));
     }
 }
