@@ -36,9 +36,9 @@ void Character::useAbility(size_t index, Character &target)
 	CharacterAbilities[index]->useAbility(*this, target);
 }
 
-void Character::addAbility(std::shared_ptr<Ability> ability)
+void Character::addAbility(std::unique_ptr<Ability> ability)
 {
-    CharacterAbilities.push_back(ability);
+    CharacterAbilities.push_back(std::move(ability));
 }
 
 void Character::addEffect(const Effect& effect)

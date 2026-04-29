@@ -3,19 +3,22 @@
 #include "Fireball.h"
 #include "Enraged.h"
 
-vector<shared_ptr<Ability>> AbilityFactory::createWizardAbilities()
+vector<unique_ptr<Ability>> AbilityFactory::createWizardAbilities()
     // add or remove abilites as you please
 {
-    return {
-        std::make_shared<Fireball>(2),
-        std::make_shared<Enraged>(2,2)
-    };
+    vector<unique_ptr<Ability>> abilities;
+
+    abilities.push_back(std::make_unique<Fireball>(2));
+    abilities.push_back(std::make_unique<Enraged>(2,2));
+
+    return abilities;
 }
 
-vector<shared_ptr<Ability>> AbilityFactory::createGoblinAbilities()
+vector<unique_ptr<Ability>> AbilityFactory::createGoblinAbilities()
 {
-    return {
-        std::make_shared<Fireball>(2),
-        std::make_shared<Enraged>(2,2)
-    };
+    vector<unique_ptr<Ability>> abilities;
+
+    abilities.push_back(std::make_unique<Fireball>(2));
+
+    return abilities;
 }
