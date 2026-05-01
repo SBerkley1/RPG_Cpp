@@ -32,3 +32,7 @@ void Monster::printEffects() const
     }
 }
 
+Monster::Type Monster::getMonsterType() const
+{
+    return MonsterType;
+}
