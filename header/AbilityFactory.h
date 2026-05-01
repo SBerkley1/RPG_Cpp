@@ -17,6 +17,10 @@ public:
 
     static vector<unique_ptr<Ability>> createGoblinAbilities(); // Goblin abilities
 
+    static vector<unique_ptr<Ability>> createTrollAbilities(); // Troll abilities
+
+    static vector<unique_ptr<Ability>> createOrcAbilities(); // Orc abilities
+
     // add more when more players/monsters are added
 };
 
