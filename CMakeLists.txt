@@ -14,4 +14,4 @@ add_executable(RPG_GAME
     src/Player.cpp
     src/Monster.cpp
     src/Mana.cpp
- "header/NormalAttack.h")
+ )
