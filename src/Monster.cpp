@@ -13,8 +13,10 @@ void Monster::printAbilities() const
     	// iterate through ability list and print the name
 		cout << this->Name << "\'s Ability List:" << endl;
 
+        unsigned int number{ 1 };
 		for (const auto& ability : CharacterAbilities) {
-			cout << ability->getName() << " ";
+			cout << number << ".) " << ability->getName() << '\n';
+            ++number;
 		}
 
 		cout << endl;

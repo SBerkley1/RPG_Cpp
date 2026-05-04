@@ -28,7 +28,9 @@ int main() {
         loadMonsterAbilities(*monster);
     }
     
-    Character& goblin = *monsters[0];
+    Character& goblin = *monsters[0];   // goblin
+    Character& troll = *monsters[1];    // troll
+    Character& orc = *monsters[1];
 
     wizard->printAbilities();
 
@@ -46,35 +48,75 @@ int main() {
 
 
    int counter = 0;
-    while (wizard->isAlive() && goblin.isAlive() && counter <= 10) {
-        if (counter == 2) {
-            wizard->useAbility(2, *wizard);
-            goblin.useAbility(1, goblin); 
-        }
+   while (wizard->isAlive() && goblin.isAlive() && counter <= 10) {
+       if (counter == 1) {
+           wizard->useAbility(1, goblin);
+       }
+        
+       if (counter == 2) {
+           wizard->useAbility(2, *wizard);
+           goblin.useAbility(1, goblin); 
+       }
 
-        wizard->useAbility(0, goblin);
-        cout << endl;
+       wizard->useAbility(0, goblin);
+       cout << endl;
 
-        goblin.useAbility(0, *wizard);
-        cout << endl;
+       goblin.useAbility(0, *wizard);
+       cout << endl;
 
-        cout << "Valek: ";
-        wizard->printHitPoints();
+       cout << "Valek: ";
+       wizard->printHitPoints();
 
-        cout << "Goblin ";
-        goblin.printHitPoints();
+       cout << "Goblin ";
+       goblin.printHitPoints();
 
-        cout << endl;
+       cout << endl;
 
-        wizard->updateEffect();
+       wizard->updateEffect();
 
-        wizard->printEffects();
-        wizard->printMana();
+       wizard->printEffects();
+       wizard->printMana();
 
-        ++counter;
-    } 
+       ++counter;
+   } 
 
-    return 0;
+   cout << "\n==========================\n" << endl;
+
+   while (wizard->isAlive() && troll.isAlive() && counter <= 10) {
+       if (counter == 1) {
+           wizard->useAbility(1, troll);
+       }
+
+       if (counter == 2) {
+           wizard->useAbility(2, *wizard);
+           troll.useAbility(1, troll);
+       }
+
+       wizard->useAbility(0, troll);
+       cout << endl;
+
+       troll.useAbility(0, *wizard);
+       cout << endl;
+
+       cout << "Valek: ";
+       wizard->printHitPoints();
+
+       cout << "Troll ";
+       troll.printHitPoints();
+
+       cout << endl;
+
+       wizard->updateEffect();
+
+       wizard->printEffects();
+       wizard->printMana();
+
+       ++counter;
+   }
+
+   cout << "\n==========================\n" << endl;
+
+   return 0;
 }
 
 

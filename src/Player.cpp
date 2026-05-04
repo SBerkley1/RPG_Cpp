@@ -1,3 +1,4 @@
+#include <iomanip>
 
 #include "Ability.h"
 #include "Effect.h"
@@ -15,10 +16,15 @@ void Player::printAbilities() const
     	// iterate through ability list and print the name
 		cout << this->Name << "\'s Ability List:" << endl;
 
+        cout << std::left;
+        unsigned int number{ 1 }; // used to print out a numerical list
 		for (const auto& ability : CharacterAbilities) {
-			cout << ability->getName() 
-                 << ":    Mana Cost: " << ability->getManaCost() 
-                 << "   Cooldown: " << ability->getCooldown() << endl;
+			cout << number << ".) " 
+                 << std::setw(18) << ability->getName()
+                 << std::setw(15) << ("Mana Cost: " + std::to_string(ability->getManaCost())) 
+                 << "Cooldown: " << ability->getCooldown() << endl;
+
+            ++number; // increment number
 		}
 
 		cout << endl;
