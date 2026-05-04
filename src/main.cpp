@@ -48,7 +48,7 @@ int main() {
    int counter = 0;
     while (wizard->isAlive() && goblin.isAlive() && counter <= 10) {
         if (counter == 2) {
-            wizard->useAbility(1, *wizard);
+            wizard->useAbility(2, *wizard);
             goblin.useAbility(1, goblin); 
         }
 
