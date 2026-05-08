@@ -38,7 +38,7 @@ public:
 
 	string getName() const;
 	void printHitPoints() const;
-	void getCurrentHP() const;
+	int getCurrentHP() const;
 	int getBuffDamangeBonus() const;                       // get the increase of damage from buff
 	bool isAlive() const;
     

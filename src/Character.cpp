@@ -73,9 +73,9 @@ void Character::printHitPoints() const
 	this->HitPoints.displayHP();
 }
 
-void Character::getCurrentHP() const
+int Character::getCurrentHP() const
 {
-	this->HitPoints.getCurrentHP();
+	return this->HitPoints.getCurrentHP();
 }
 
 int Character::getBuffDamangeBonus() const

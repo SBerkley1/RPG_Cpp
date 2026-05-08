@@ -50,7 +50,7 @@ int main() {
    int counter = 0;
    while (wizard->isAlive() && goblin.isAlive() && counter <= 10) {
        if (counter == 1) {
-           wizard->useAbility(1, goblin);
+           wizard->useAbility(3, goblin);
        }
         
        if (counter == 2) {
