@@ -9,7 +9,9 @@
 class Fireball : public Ability {
 public:
 
-	Fireball(int damage) : Ability{ "Fireball", "Cast a fireball to do imense damage", 1, 1 }, Damage{ damage } {}
+	Fireball(int damage) 
+		: Ability{ "Fireball", "Cast a fireball to do imense damage", 1, 1 }
+		, Damage{ damage } {}
 
 
 	void useAbility(Character& owner, Character& target) override
