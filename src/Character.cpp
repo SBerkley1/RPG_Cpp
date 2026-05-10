@@ -14,6 +14,13 @@ void Character::characterTakeDamage(int damage)
 	HitPoints.takeDamage(damage);
 }
 
+void Character::characterHealsHP(int heal)
+	// character gets healed by heal amount
+{
+	cout << Name << " got healed by " << heal << " hp!" << endl;
+	HitPoints.healHP(heal);
+}
+
 void Character::useAbility(size_t index, Character &target)
 	// character using ability
 {

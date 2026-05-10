@@ -13,6 +13,7 @@ public:
 	void heal(int healAmount);		// heal by parameter's amount
 
 	void takeDamage(int damage);	// creature takes damage
+	void healHP(int healAmount);	// creature heals HP
 
 	void displayHP() const;				// display CurrentHP / MaxHP
 

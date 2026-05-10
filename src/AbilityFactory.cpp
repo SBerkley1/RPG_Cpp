@@ -4,6 +4,7 @@
 #include "Fireball.h"
 #include "Enraged.h"
 #include "Reveal.h"
+#include "SmallHeal.h"
 
 vector<unique_ptr<Ability>> AbilityFactory::createWizardAbilities()
     // add or remove abilites as you please
@@ -14,6 +15,8 @@ vector<unique_ptr<Ability>> AbilityFactory::createWizardAbilities()
     abilities.push_back(std::make_unique<Fireball>(2));
     abilities.push_back(std::make_unique<Enraged>(2,2));
     abilities.push_back(std::make_unique<Reveal>());
+    abilities.push_back(std::make_unique<SmallHeal>());
+
 
     return abilities;
 }
