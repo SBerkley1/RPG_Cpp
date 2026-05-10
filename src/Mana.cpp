@@ -38,12 +38,13 @@ void Mana::setLvlUpMaxMana(int addLvlUpMana)
 
 void Mana::restoreMana(int restoreAmount)
 {
-    for(size_t i = 0; i < restoreAmount; ++i) {
-        if(this->CurrentMana >= this->MaxMana) {
-            break;
-        }
+    int restore = CurrentMana + restoreAmount;
 
-        CurrentMana += restoreAmount;
+    if (restore > MaxMana) {
+        CurrentMana = MaxMana;
+    }
+    else {
+        CurrentMana = restore;
     }
 }
 
