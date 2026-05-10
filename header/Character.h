@@ -27,6 +27,7 @@ public:
 	virtual ~Character() = default;
 
 	virtual void characterTakeDamage(int damage);	// character taking damage
+	virtual void characterHealsHP(int heal);	// character healing
 	virtual void printAbilities() const = 0;
 	virtual void printEffects() const = 0;
 

@@ -24,13 +24,14 @@ int main() {
 
 
     loadPlayerAbilities(*wizard);
+
     for (auto& monster : monsters) {
         loadMonsterAbilities(*monster);
     }
     
     Character& goblin = *monsters[0];   // goblin
     Character& troll = *monsters[1];    // troll
-    Character& orc = *monsters[1];
+    Character& orc = *monsters[2];
 
     wizard->printAbilities();
 
@@ -54,8 +55,15 @@ int main() {
        }
         
        if (counter == 2) {
-           wizard->useAbility(2, *wizard);
+           wizard->useAbility(4, *wizard);
            goblin.useAbility(1, goblin); 
+
+           cout << wizard->getName() << ":\n";
+           wizard->printHitPoints();
+           wizard->printMana();
+
+           cout << goblin.getName() << ":\n";
+           goblin.printHitPoints();
        }
 
        wizard->useAbility(0, goblin);
@@ -82,12 +90,13 @@ int main() {
 
    cout << "\n==========================\n" << endl;
 
-   while (wizard->isAlive() && troll.isAlive() && counter <= 10) {
-       if (counter == 1) {
-           wizard->useAbility(1, troll);
+   unsigned int newCounter{ 0 };
+   while (wizard->isAlive() && troll.isAlive() && newCounter <= 10) {
+       if (newCounter == 1) {
+           wizard->useAbility(4, *wizard);
        }
 
-       if (counter == 2) {
+       if (newCounter == 2) {
            wizard->useAbility(2, *wizard);
            troll.useAbility(1, troll);
        }
@@ -111,7 +120,7 @@ int main() {
        wizard->printEffects();
        wizard->printMana();
 
-       ++counter;
+       ++newCounter;
    }
 
    cout << "\n==========================\n" << endl;
