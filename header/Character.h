@@ -31,7 +31,7 @@ public:
 	virtual void printAbilities() const = 0;
 	virtual void printEffects() const = 0;
 
-	void useAbility(size_t index, Character& targer);		// character used an ability in CharacterAbilities
+	void useAbility(size_t index, Character& target);		// character used an ability in CharacterAbilities
 
     void addAbility(std::unique_ptr<Ability> ability);
 	void addEffect(const Effect& effect);					// add buffs and debuffs to player 

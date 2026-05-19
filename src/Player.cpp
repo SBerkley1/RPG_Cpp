@@ -11,6 +11,21 @@ void Player::characterTakeDamage(int damage)
 	this->HitPoints.takeDamage(damage);
 }
 
+void Player::addItem(std::shared_ptr<Item> aItem, unsigned int quantity)
+{
+    inventory.addItem(aItem, quantity);
+}
+
+void Player::removeItem(std::shared_ptr<Item> aItem, unsigned int quantity)
+{
+    inventory.removeItem(aItem, quantity);
+}
+
+void Player::useItem(std::shared_ptr<Item> item, Character& target)
+{
+    inventory.useItem(item, *this, target);
+}
+
 void Player::printAbilities() const
 {
     	// iterate through ability list and print the name
@@ -47,4 +62,9 @@ void Player::printEffects() const
 void Player::printMana() const
 {
     ManaPoints.printManaSlots();
+}
+
+void Player::printPlayerInventory() const
+{
+    inventory.printInventory();
 }
