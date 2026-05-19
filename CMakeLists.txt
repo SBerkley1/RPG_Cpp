@@ -14,4 +14,6 @@ add_executable(RPG_GAME
     src/Player.cpp
     src/Monster.cpp
     src/Mana.cpp
+    src/Inventory.cpp
+    src/Item.cpp
 )

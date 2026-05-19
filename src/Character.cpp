@@ -41,8 +41,6 @@ void Character::useAbility(size_t index, Character &target)
 	else {
 		cout << "You do not have enough mana!" << endl;
 	}
-
-	
 }
 
 void Character::addAbility(std::unique_ptr<Ability> ability)

@@ -11,11 +11,15 @@
 #include "Monster.h"
 #include "Player.h"
 
+#include "HealthPotion.h"
+
 void loadPlayerAbilities(Character& player);
 void loadMonsterAbilities(Monster& monster);
 
 int main() {
     auto wizard = std::make_unique<Player>("Valek", 25, 5);
+
+    auto healthPotion = std::make_shared<HealthPotion>();
 
     auto monsters = std::vector<std::unique_ptr<Monster>>();
     monsters.push_back(std::make_unique<Monster>("Goblin", 20, 5, Monster::Type::Goblin));
@@ -24,6 +28,7 @@ int main() {
 
 
     loadPlayerAbilities(*wizard);
+    wizard->addItem(healthPotion);
 
     for (auto& monster : monsters) {
         loadMonsterAbilities(*monster);
@@ -34,10 +39,11 @@ int main() {
     Character& orc = *monsters[2];
 
     wizard->printAbilities();
+    wizard->printPlayerInventory();
 
     cout << endl;
 
-    goblin.printAbilities();
+    goblin.printAbilities(); // nned to fix to show quantity too
 
     cout << "Valek: "; 
     wizard->printHitPoints();
@@ -51,7 +57,8 @@ int main() {
    int counter = 0;
    while (wizard->isAlive() && goblin.isAlive() && counter <= 10) {
        if (counter == 1) {
-           wizard->useAbility(3, goblin);
+           wizard->useItem(healthPotion, *wizard);
+           wizard->printPlayerInventory();
        }
         
        if (counter == 2) {
