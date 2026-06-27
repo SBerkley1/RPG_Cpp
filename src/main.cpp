@@ -40,6 +40,7 @@ int main() {
 
     wizard->printAbilities();
     wizard->printPlayerInventory();
+    wizard->printPlayerXP();
 
     cout << endl;
 
@@ -96,6 +97,9 @@ int main() {
    } 
 
    cout << "\n==========================\n" << endl;
+
+    wizard->playerGainsXP(450);
+    wizard->printPlayerXP();
 
    unsigned int newCounter{ 0 };
    while (wizard->isAlive() && troll.isAlive() && newCounter <= 10) {

@@ -16,4 +16,6 @@ add_executable(RPG_GAME
     src/Mana.cpp
     src/Inventory.cpp
     src/Item.cpp
+        header/LevelSystem.h
+        src/LevelSystem.cpp
 )
