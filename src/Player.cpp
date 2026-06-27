@@ -11,6 +11,11 @@ void Player::characterTakeDamage(int damage)
 	this->HitPoints.takeDamage(damage);
 }
 
+void Player::playerGainsXP(int amount)
+{
+    this->levelSystem.gainXP(amount);
+}
+
 void Player::addItem(std::shared_ptr<Item> aItem, unsigned int quantity)
 {
     inventory.addItem(aItem, quantity);
@@ -62,6 +67,11 @@ void Player::printEffects() const
 void Player::printMana() const
 {
     ManaPoints.printManaSlots();
+}
+
+void Player::printPlayerXP() const
+{
+    levelSystem.printXP();
 }
 
 void Player::printPlayerInventory() const
