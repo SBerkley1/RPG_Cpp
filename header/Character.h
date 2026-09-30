@@ -9,6 +9,7 @@
 #include "HP.h"
 #include "Mana.h"
 #include "Effect.h"
+#include "Item.h"
 
 
 using std::string;
@@ -27,14 +28,16 @@ public:
 	virtual ~Character() = default;
 
 	virtual void characterTakeDamage(int damage);	// character taking damage
-	virtual void characterHealsHP(int heal);	// character healing
+	virtual void characterHealsHP(int heal);		// character healing
+	virtual void characterRestoresMana(int mana);	// character restores mana
 	virtual void printAbilities() const = 0;
 	virtual void printEffects() const = 0;
 
 	void useAbility(size_t index, Character& target);		// character used an ability in CharacterAbilities
 
     void addAbility(std::unique_ptr<Ability> ability);
-	void addEffect(const Effect& effect);					// add buffs and debuffs to player 
+	void addEffect(const Effect& effect);					// add buffs and debuffs to player
+	void addItem(Item& item);
 	void updateEffect();									// removes 1 turn from the buff/debuff countdown
 
 	string getName() const;

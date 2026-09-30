@@ -18,8 +18,8 @@ public:
 		Orc
 	};
 
-	Monster(const string& name, int startingHP, int startingMana, Type type) 
-		: Character(name, startingHP, startingMana), MonsterType {type} {}
+	Monster(const string& name, int startingHP, int startingMana, Type type, int xpAmount)
+		: Character(name, startingHP, startingMana), MonsterType{ type }, xpEarned{ xpAmount } {}
 
 	void characterTakeDamage(int damage) override;	// Monster takes damage and output Monster taking damage
 
@@ -28,8 +28,13 @@ public:
 
 	Type getMonsterType() const;
 
+	int getXpEarned() {
+		return xpEarned;
+	}
+
 private:
 	Type MonsterType;
+	int xpEarned;
 };	
 
 #endif // MONSTER_H
