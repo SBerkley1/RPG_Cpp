@@ -21,6 +21,13 @@ void Character::characterHealsHP(int heal)
 	HitPoints.healHP(heal);
 }
 
+void Character::characterRestoresMana(int mana)
+	// character restores mana by mana amount
+{
+	cout << Name << " restored mana by " << mana << " mana slots!" << endl;
+	ManaPoints.restoreMana(mana);
+}
+
 void Character::useAbility(size_t index, Character &target)
 	// character using ability
 {
@@ -51,6 +58,11 @@ void Character::addAbility(std::unique_ptr<Ability> ability)
 void Character::addEffect(const Effect& effect)
 {
 	this->ActiveEffects.push_back(effect);
+}
+
+void Character::addItem(Item& item)
+{
+	
 }
 
 void Character::updateEffect()

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <format>
 
 #include "Ability.h"
 #include "AbilityFactory.h"
@@ -15,6 +16,7 @@
 
 void loadPlayerAbilities(Character& player);
 void loadMonsterAbilities(Monster& monster);
+void battleReport(Character& player, Character& monster);
 
 int main() {
     auto wizard = std::make_unique<Player>("Valek", 25, 5);
@@ -22,9 +24,9 @@ int main() {
     auto healthPotion = std::make_shared<HealthPotion>();
 
     auto monsters = std::vector<std::unique_ptr<Monster>>();
-    monsters.push_back(std::make_unique<Monster>("Goblin", 20, 5, Monster::Type::Goblin));
-    monsters.push_back(std::make_unique<Monster>("Troll", 25, 5, Monster::Type::Troll));
-    monsters.push_back(std::make_unique<Monster>("Orc", 30, 5, Monster::Type::Orc));
+    monsters.push_back(std::make_unique<Monster>("Goblin", 20, 5, Monster::Type::Goblin, 450));
+    monsters.push_back(std::make_unique<Monster>("Troll", 25, 5, Monster::Type::Troll, 500));
+    monsters.push_back(std::make_unique<Monster>("Orc", 30, 5, Monster::Type::Orc, 550));
 
 
     loadPlayerAbilities(*wizard);
@@ -94,7 +96,11 @@ int main() {
        wizard->printMana();
 
        ++counter;
-   } 
+   }
+
+   battleReport(*wizard, goblin);
+
+   wizard->printPlayerInventory();
 
    cout << "\n==========================\n" << endl;
 
@@ -133,47 +139,13 @@ int main() {
 
        ++newCounter;
    }
+   if (wizard->isAlive()) {
+       battleReport(*wizard, troll);
+   }
+
 
    cout << "\n==========================\n" << endl;
 
    return 0;
 }
 
-
-void loadPlayerAbilities(Character& player) 
-    // loading Player abilities
-{
-    for (auto& ability : AbilityFactory::createWizardAbilities()) {
-        player.addAbility(std::move(ability));
-    }
-}
-
-
-
-void loadMonsterAbilities(Monster& monster)
-    // loading Monster abilites based on MonsterType
-{
-    std::vector<std::unique_ptr<Ability>> abilities;
-
-    switch(monster.getMonsterType()) {
-    case Monster::Type::Goblin:
-        abilities = AbilityFactory::createGoblinAbilities();
-        break;
-
-    case Monster::Type::Troll:
-        abilities = AbilityFactory::createTrollAbilities();
-        break;
-
-    case Monster::Type::Orc:
-        abilities = AbilityFactory::createOrcAbilities();
-        break;
-
-    default: // eventually change to throw
-        cout << "Invalid Monster Type!" << endl;
-    }
-
-
-    for(auto& ability : abilities) {
-        monster.addAbility(std::move(ability));
-    }
-}
