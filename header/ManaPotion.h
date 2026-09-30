@@ -15,7 +15,7 @@ public:
 	void useItem(Character& owner, Character& target) override
 	{
 		cout << owner.getName() << " used " << getItemName() << " and restored " << ManaAmount << " Mana!" << endl;
-		target.characterHealsHP(ManaAmount);
+		target.characterRestoresMana(ManaAmount);
 	}
 
 	unsigned int getManaAmount()
